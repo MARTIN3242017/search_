@@ -1,0 +1,13 @@
+server:
+  port: 9876
+spring:
+  mail:
+    host: smtp.qq.com
+    username: 908780582@qq.com  #发件人
+    password: XXXXXXXXXXXXXX #邮箱授权码
+    default-encoding: UTF-8
+  search:
+    receiver: 908780582@qq.com #收件人
+    frequent: 24 #检索频率 单位小时
+    keywordsList: 海湾明珠,圣淘沙骏园,碧海湾花园,香缇湾花园,泰华阳光海,宝源新村,轻铁西 #检索关键词
+    searchUrl: https://www.douban.com/group/search?cat=1013&q=
