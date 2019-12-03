@@ -1,5 +1,5 @@
 # search
-SpringBoot 定期抓取豆瓣租房信息推送到邮箱
+> SpringBoot 定期抓取豆瓣租房信息推送到邮箱
 
 刚毕业的租房狗每次找房都需要耗费大量精力,或是心仪的房子又因为信息获取不及时被他人抢走很难受
 
@@ -7,7 +7,9 @@ SpringBoot 定期抓取豆瓣租房信息推送到邮箱
 
 当然 如果你刚好懂点HTML的话也可以轻松改造成其他网站信息抓取工具
 
-安装步骤:
+
+
+> 安装步骤:
 
   1.application.yml文件修改邮箱发件人\邮箱授权码\收件人\检索关键词
 
@@ -15,5 +17,8 @@ SpringBoot 定期抓取豆瓣租房信息推送到邮箱
 
 涉及技术: SpringBoot+SpringTask定时任务+SimpleMailMessage邮件发送
 
-效果图:
+
+
+> 效果图:
+
 <img src="https://as-note.oss-cn-shenzhen.aliyuncs.com/uploadFile/U20191108441386583/WechatIMG1.png">
