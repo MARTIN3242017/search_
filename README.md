@@ -14,3 +14,6 @@ SpringBoot 定期抓取豆瓣租房信息推送到邮箱
   2.java -jar search.jar 一键运行 无需其他依赖
 
 涉及技术: SpringBoot+SpringTask定时任务+SimpleMailMessage邮件发送
+
+效果图:
+<img src="https://as-note.oss-cn-shenzhen.aliyuncs.com/uploadFile/U20191108441386583/WechatIMG1.png">
