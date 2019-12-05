@@ -11,7 +11,7 @@
 
 > 安装步骤:
 
-  1.application.yml文件修改邮箱发件人\邮箱授权码\收件人\检索关键词
+  1.application.yml文件修改邮箱发件人\邮箱授权码\收件人\检索关键词\检索时间范围 Controller中修改corn表达式指定发送频率
 
   2.java -jar search.jar 一键运行 无需其他依赖
 
