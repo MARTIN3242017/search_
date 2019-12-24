@@ -1,19 +1,36 @@
+
+
 pipeline {
-  agent any
-  stages {
-    stage('step01') {
-      post {
-        always {
-          archiveArtifacts(artifacts: 'target/*.jar', fingerprint: true)
-        }
+   agent any
+   tools {
+      // Install the Maven version configured as "search" and add it to the path.
+      maven "search"
+   }
 
-      }
-      steps {
-        sleep 1
-        sh 'mvn -B -search clean package'
-        sh 'sh \'echo "Hello world"\''
-      }
-    }
+   stages {
+      stage('Build') {
+         steps {
+            // Get some code from a GitHub repository
+            git 'git@github.com:MARTIN3242017/search.git'
 
-  }
+
+            // Run Maven on a Unix agent.
+            sh "mvn -Dmaven.test.failure.ignore=true clean package"
+
+
+            // To run Maven on a Windows agent, use
+            // bat "mvn -Dmaven.test.failure.ignore=true clean package"
+         }
+
+
+         post {
+            // If Maven was able to run the tests, even if some of the test
+            // failed, record the test results and archive the jar file.
+            success {
+               junit '**/target/surefire-reports/TEST-*.xml'
+               archiveArtifacts 'target/*.jar'
+            }
+         }
+      }
+   }
 }
