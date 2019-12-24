@@ -4,7 +4,7 @@ pipeline {
    agent any
    tools {
       // Install the Maven version configured as "search" and add it to the path.
-      maven "search"
+      maven3.6.3 "search"
    }
 
    stages {
