@@ -29,6 +29,7 @@ pipeline {
                archiveArtifacts 'target/*.jar'
                sh "echo 'hello world!!!'"
                sh "ls"
+               sh "pwd"
                sh "cd target"
                sh "ls"
                sh "cp ../Dockerfile ./"
