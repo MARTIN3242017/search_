@@ -29,8 +29,9 @@ pipeline {
                archiveArtifacts 'target/*.jar'
                sh "echo 'hello world!!!'"
                sh "ls"
-               sh "cp Dockerfile /target"
                sh "cd /target"
+               sh "ls"
+               sh "cp ../Dockerfile ./"
                sh "ls"
                sh "docker build -t index ."
                sh "docker run -d -p 9090:9090 search"
