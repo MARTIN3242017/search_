@@ -12,6 +12,7 @@ pipeline {
          }
          post {
             success {
+               //文件归档(后续可手动下载) 
                archiveArtifacts 'target/*.jar'
                sh "echo 'hello world!!!'"
                sh "ls"
