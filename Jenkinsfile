@@ -28,16 +28,13 @@ pipeline {
             success {
                archiveArtifacts 'target/*.jar'
                sh "echo 'hello world!!!'"
-               sh "cd .."
                sh "ls"
-               sh "cd .."
+               sh "cp ../dockerfile ./"
                sh "ls"
-               sh "cd .."
-               sh "ls"
-               sh "cd .."
-               sh "ls"
-               sh "cd .."
-               sh "ls"
+               sh "docker build -t index ."
+               sh "docker run -d -p 9090:9090 search"
+                  
+               
             }
          }
       }
