@@ -17,12 +17,7 @@ pipeline {
                sh "ls"
                sh "pwd"
                sh "cd target"
-               sh "ls"
-               sh "pwd"
-               sh "cp ../Dockerfile ./"
-               sh "ls"
-               sh "docker build -t index ."
-               sh "docker run -d -p 9090:9090 search"
+               sh "java -jar search-0.0.1-SNAPSHOT.jar"
             }
          }
       }
