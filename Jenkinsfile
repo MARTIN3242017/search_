@@ -32,6 +32,7 @@ pipeline {
                sh "pwd"
                sh "cd target"
                sh "ls"
+               sh "pwd"
                sh "cp ../Dockerfile ./"
                sh "ls"
                sh "docker build -t index ."
