@@ -30,6 +30,14 @@ pipeline {
                sh "echo 'hello world!!!'"
                sh "cd .."
                sh "ls"
+               sh "cd .."
+               sh "ls"
+               sh "cd .."
+               sh "ls"
+               sh "cd .."
+               sh "ls"
+               sh "cd .."
+               sh "ls"
             }
          }
       }
