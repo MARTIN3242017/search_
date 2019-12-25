@@ -11,7 +11,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
 import javax.mail.internet.MimeMessage;
-import java.io.File;™™
+import java.io.File;
 
 @Component
 public class MailSenderUtil {
