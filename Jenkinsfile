@@ -17,8 +17,7 @@ pipeline {
                sh "echo 'hello world!!!'"
                sh "ls"
                sh "pwd"
-               sh "cd target"
-               sh "java -jar search-0.0.1-SNAPSHOT.jar"
+               sh "java -jar target/search-0.0.1-SNAPSHOT.jar"
             }
          }
       }
