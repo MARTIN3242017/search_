@@ -17,7 +17,11 @@ pipeline {
                sh "echo 'hello world!!!'"
                sh "ls"
                sh "pwd"
-               sh "java -jar target/search-0.0.1-SNAPSHOT.jar"
+               sh "cp target/search-0.0.1-SNAPSHOT.jar /mydata/jenkins_home/search.jar"
+               sh "cd /mydata/jenkins_home"
+               sh "ls"
+               sh "pwd"
+               //sh "java -jar target/search-0.0.1-SNAPSHOT.jar"
             }
          }
       }
