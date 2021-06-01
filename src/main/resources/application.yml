@@ -1,13 +1,42 @@
 server:
   port: 9876
 spring:
+  #数据源连接池类型
+  data-source:
+    type: com.alibaba.druid.pool.DruidDataSource
+
   mail:
     host: smtp.qq.com
-    username: 908780582@qq.com  #发件人
-    password: XXXXXXXXXXXXXX #邮箱授权码
+    username: xxx@qq.com
+    password: xxx
     default-encoding: UTF-8
+    port: 587
   search:
-    receiver: 908780582@qq.com #收件人
-    frequent: 24 #检索频率 单位小时
-    keywordsList: 海湾明珠,圣淘沙骏园,碧海湾花园,香缇湾花园,泰华阳光海,宝源新村,轻铁西 #检索关键词
-    searchUrl: https://www.douban.com/group/search?cat=1013&q=
+    searchUrls: https://www.douban.com/group/search?cat=1013&q=
+
+
+#MySQL数据库配置参数
+database:
+  data-source:
+    druid:
+      filters: stat
+      driverClassName: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://xxx:3306/douban?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone = GMT&allowMultiQueries=true
+      username: root
+      password: 123456
+      initialSize: 1
+      minIdle: 1
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      validationQuery: SELECT 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: false
+      maxPoolPreparedStatementPerConnectionSize: 20
+
+#mybatis配置文件位置以及扫描范围
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.wk.search.model

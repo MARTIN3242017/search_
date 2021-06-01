@@ -16,12 +16,19 @@ public class SendController {
 
     @GetMapping(value = "/send")
     @ResponseBody
-    @Scheduled(cron = "0 0 22 * * ?") //每天22点执行一次
-    public void sendEmail() {
+    @Scheduled(cron = "0 0 0/1 * * ?") //每小时执行一次
+    public String sendEmail() {
         try {
             searchHouseService.search();
+            return "请求成功!";
         } catch (MailException ex) {
             System.err.println(ex.getMessage());
+            return "请求失败!";
         }
+    }
+
+    @GetMapping(value = "/switch")
+    public String sendEmail(@RequestParam String email) {
+        return searchHouseService.switchStatus(email);
     }
 }
