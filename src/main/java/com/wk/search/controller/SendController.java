@@ -7,6 +7,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @RestController
 @EnableScheduling
 public class SendController {
@@ -21,7 +23,7 @@ public class SendController {
         try {
             searchHouseService.search();
             return "请求成功!";
-        } catch (MailException ex) {
+        } catch (MailException | IOException ex) {
             System.err.println(ex.getMessage());
             return "请求失败!";
         }

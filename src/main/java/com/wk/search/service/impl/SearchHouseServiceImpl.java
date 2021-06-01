@@ -3,29 +3,19 @@ package com.wk.search.service.impl;
 
 import cn.hutool.core.date.DateUtil;
 import com.arronlong.httpclientutil.HttpClientUtil;
-import com.arronlong.httpclientutil.builder.HCB;
 import com.arronlong.httpclientutil.common.*;
-import com.arronlong.httpclientutil.exception.HttpProcessException;
 import com.wk.search.mapper.SearchMapper;
 import com.wk.search.model.SearchEntity;
 import com.wk.search.service.SearchHouseService;
 import com.wk.search.utils.MailSenderUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.Header;
-import org.apache.http.HttpResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -44,7 +34,7 @@ public class SearchHouseServiceImpl implements SearchHouseService {
     static InputStream inputStream;
 
     @Override
-    public void search() {
+    public void search() throws IOException {
         List<SearchEntity> list = searchMapper.getSearchInfo();
         for (SearchEntity entity : list) {
             send(entity);
@@ -89,7 +79,7 @@ public class SearchHouseServiceImpl implements SearchHouseService {
         return result.split("\\r?\\n");
     }
 
-    private void send(SearchEntity searchInfo) {
+    private void send(SearchEntity searchInfo) throws IOException {
         Float scope = searchInfo.getScope();
         String receiver = searchInfo.getReceiver();
         String[] keywords = searchInfo.getKeywordsList().split(",");
@@ -156,12 +146,8 @@ public class SearchHouseServiceImpl implements SearchHouseService {
             log.info("邮件发送失败!");
             e.printStackTrace();
         } finally {
-            log.info("请求结束!");
-            try {
-                if (inputStream != null)
-                    inputStream.close();
-            } catch (IOException ignored) {
-            }
+            if (inputStream != null)
+                inputStream.close();
         }
     }
 }
