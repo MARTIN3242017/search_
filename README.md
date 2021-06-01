@@ -18,8 +18,8 @@
 > 安装步骤:
 
   1.application.yml文件修改邮箱发件人\邮箱授权码\收件人\检索关键词\数据库账号
-
-  2.执行sh rebuild.sh 脚本运行 无需其他依赖
+  2.上传jar包 Dockerfile rebuild.sh 
+  3.执行sh rebuild.sh 脚本一键运行
 
 涉及技术: SpringBoot+SpringTask定时任务+SimpleMailMessage邮件发送
 
