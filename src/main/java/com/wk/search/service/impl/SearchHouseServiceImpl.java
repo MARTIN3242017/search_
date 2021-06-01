@@ -2,6 +2,7 @@ package com.wk.search.service.impl;
 
 
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.StrUtil;
 import com.arronlong.httpclientutil.HttpClientUtil;
 import com.arronlong.httpclientutil.common.*;
 import com.wk.search.mapper.SearchMapper;
@@ -115,7 +116,7 @@ public class SearchHouseServiceImpl implements SearchHouseService {
                             float time = (new Date().getTime() - parse.getTime()) / 1000F / 60F / 60F;
                             boolean blackWordFlag = true;
                             for (String blackWord : blackWords) {
-                                if (titleStr.contains(blackWord)) {
+                                if (!StrUtil.isEmpty(blackWord) && titleStr.contains(blackWord)) {
                                     blackWordFlag = false;
                                     break;
                                 }
@@ -138,7 +139,7 @@ public class SearchHouseServiceImpl implements SearchHouseService {
             if (infoStr.length() > 0) {
                 String str = "====================================" + "\r\n" + "检索范围: " + scope + "小时内" + "\r\n" + "关键词: " + Arrays.toString(keywords) + "\r\n" + "====================================" + "\r\n";
                 mailSenderUtil.sendSimpleMail(receiver, "豆瓣租房-发现新房源", str + infoStr.toString());
-                log.info("邮件发送成功!");
+                log.info("{} 邮件发送成功!", receiver);
             } else {
                 log.info("未找到合适信息");
             }
